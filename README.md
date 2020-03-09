@@ -1,3 +1,3 @@
 # glowing-guacamole
 
-Investigate into checkpointing for HPC
+Investigating into checkpointing for HPC
