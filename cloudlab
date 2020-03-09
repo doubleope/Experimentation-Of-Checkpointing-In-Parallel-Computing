@@ -1,1 +1,6 @@
+Step by step how to get set up on cloudlab:
 
+Create ssh:
+ssh-keygen -t rsa -b 4096 -C "email@gmail.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
