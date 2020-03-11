@@ -1,0 +1,3 @@
+$ git clone https://github.com/spack/spack.git
+$ cd spack/bin
+$ ./spack install zlib
