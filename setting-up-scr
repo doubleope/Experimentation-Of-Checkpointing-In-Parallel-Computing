@@ -1,3 +1,9 @@
+Install spack:
+
 git clone https://github.com/spack/spack.git
 cd spack/bin
 ./spack install zlib
+
+Install scr:
+
+./spack install scr
