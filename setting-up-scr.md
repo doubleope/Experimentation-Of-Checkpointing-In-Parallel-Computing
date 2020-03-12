@@ -31,5 +31,5 @@ export PATH=/usr/lib/openmpi/bin:$PATH
 sudo yum -y install glibc-devel.i386
 </pre>
 
-#### Find the directory where spack was installed:
+#### Find the directory where SCR was installed:
 <pre>./spack find --paths</pre>
