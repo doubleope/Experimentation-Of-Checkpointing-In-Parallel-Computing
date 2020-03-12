@@ -1,8 +1,9 @@
 # Install spack:
 
-<pre>git clone https://github.com/spack/spack.git</pre>
+<pre>git clone https://github.com/spack/spack.git
 cd spack/bin
 ./spack install zlib
+</pre>
 
 # Install compilers:
 
