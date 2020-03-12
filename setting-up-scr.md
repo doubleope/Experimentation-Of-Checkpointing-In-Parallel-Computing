@@ -6,7 +6,7 @@ cd spack/bin
 
 # Install compilers:
 
-yum install gcc-gfortran
+sudo yum install gcc-gfortran
 
 # Install scr (make sure you're in the spack/bin directory):
 
