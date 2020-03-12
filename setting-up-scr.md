@@ -13,5 +13,5 @@ cd spack/bin
 
 <pre>./spack install scr</pre>
 
-
+## Building the SCR <pre>test_api</pre> example
 
