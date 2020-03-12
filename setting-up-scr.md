@@ -38,5 +38,5 @@ sudo yum -y install glibc-devel.i686 glibc-devel
 
 
 ## Tasks:
-test online example
-complete Docker
+1. test online example
+2. complete Docker
