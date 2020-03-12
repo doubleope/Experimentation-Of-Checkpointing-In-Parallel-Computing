@@ -1,3 +1,5 @@
+## Note: This is not working yet, this is for documentation purposes only for now. Will update when everything works
+
 ## Install spack:
 
 <pre>git clone https://github.com/spack/spack.git
@@ -28,7 +30,7 @@ fc: /usr/bin/gfortran
 <pre>
 sudo yum install openmpi-devel.i686
 export PATH=/usr/lib/openmpi/bin:$PATH
-sudo yum -y install glibc-devel.i386
+sudo yum -y install glibc-devel.i686 glibc-devel
 </pre>
 
 #### Find the directory where SCR was installed:
