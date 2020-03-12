@@ -9,8 +9,14 @@ cd spack/bin
 
 <pre>sudo yum install gcc-gfortran</pre>
 
-Then add to compilers.yaml file located at
+Then locate compilers.yaml file at:
 <pre> /users/your_username/.spack/linux </pre>
+
+Modify the file and make changes to 'f77' and 'fc' fields like so:
+<pre>
+f77: /usr/bin/gfortran
+fc: /usr/bin/gfortran
+</pre>
 
 ## Install scr (make sure you're in the spack/bin directory):
 
