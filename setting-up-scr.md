@@ -5,13 +5,13 @@ cd spack/bin
 ./spack install zlib
 </pre>
 
-# Install compilers:
+## Install compilers:
 
-sudo yum install gcc-gfortran
+<pre>sudo yum install gcc-gfortran</pre>
 
-# Install scr (make sure you're in the spack/bin directory):
+## Install scr (make sure you're in the spack/bin directory):
 
-./spack install scr
+<pre>./spack install scr</pre>
 
 
 
