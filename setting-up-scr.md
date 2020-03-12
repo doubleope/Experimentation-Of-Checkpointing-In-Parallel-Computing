@@ -38,6 +38,7 @@ sudo yum -y install glibc-devel.i686 glibc-devel
 
 
 ## Tasks:
+<ul><li>Try using </li></ul>
 1. Test online example
 2. Complete Docker
 3. Add /usr/lib/openmpi/include to include in makefile. Do this in a fresh node
