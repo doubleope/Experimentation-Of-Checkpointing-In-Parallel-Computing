@@ -35,3 +35,8 @@ sudo yum -y install glibc-devel.i686 glibc-devel
 
 #### Find the directory where SCR was installed:
 <pre>./spack find --paths</pre>
+
+
+## Tasks:
+test online example
+complete Docker
