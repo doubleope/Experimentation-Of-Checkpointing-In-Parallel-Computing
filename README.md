@@ -1,4 +1,4 @@
-# Experimentation-Of-Checkpointing-In-Parallel-Computing
+# Experimentation On Checkpointing In Parallel Computing
 
 Investigating into checkpointing applicable for Parallel Computing
 
