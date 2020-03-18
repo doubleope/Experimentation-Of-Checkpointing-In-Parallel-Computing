@@ -37,6 +37,18 @@ sudo yum -y install glibc-devel.i686 glibc-devel
 <pre>./spack find --paths scr</pre>
 
 
+## Use CMake
+<pre>
+git clone https://github.com/LLNL/scr 
+mkdir build
+mkdir install
+cd build
+pip3 install --user git+https://github.com/jaraco/path.git
+cmake -DCMAKE_INSTALL_PREFIX=../install ../scr
+
+
+
+</pre>
 ## Tasks:
 <ul>
   <li>Try using CMake to build it on a fresh node</li>
