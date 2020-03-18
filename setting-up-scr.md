@@ -44,6 +44,7 @@ mkdir build
 mkdir install
 cd build
 pip3 install --user git+https://github.com/jaraco/path.git
+sudo yum install pdsh
 cmake -DCMAKE_INSTALL_PREFIX=../install ../scr
 
 
