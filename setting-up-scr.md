@@ -20,9 +20,9 @@ f77: /usr/bin/gfortran
 fc: /usr/bin/gfortran
 </pre>
 
-## Install scr (make sure you're in the spack/bin directory):
+## Install scr:
 
-<pre>./spack install scr</pre>
+<pre>~/spack/bin/./spack install scr</pre>
 
 ## Building the SCR test_api example
 
