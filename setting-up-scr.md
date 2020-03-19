@@ -55,12 +55,9 @@ cmake -DCMAKE_INSTALL_PREFIX=../install ../scr
 
 
 </pre>
-## Tasks:
+## Current Tasks:
 <ul>
-  <li>Try using CMake to build it on a fresh node</li>
-  <li>Test online example</li>
-  <li>Complete Docker</li>
-  <li> Add /usr/lib/openmpi/include to include in makefile. Do this in a fresh node</li>
-  <li></li>
+  <li>Setting up SLURM</li>
+ 
 </ul>
 
