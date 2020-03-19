@@ -46,8 +46,10 @@ export PATH=/usr/lib64/openmpi/bin:$PATH
 Go to home directory by entering:
 <pre>cd</pre>
 Download SLURM:
-<pre>wget https://download.schedmd.com/slurm/slurm-20.02.0.tar.bz2
+<pre>wget https://download.schedmd.com/slurm/slurm-20.02.0.tar.bz2</pre>
 Install by doing the following:
+<pre>
+tar -xf slurm-20.02.0.tar.bz2
 cd slurm-20.02.0
 ./configure
 sudo make install
