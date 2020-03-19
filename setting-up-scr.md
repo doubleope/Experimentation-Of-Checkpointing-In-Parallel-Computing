@@ -33,12 +33,9 @@ export PATH=/usr/lib64/openmpi/bin:$PATH
 </pre>
 
 #### Find the directory where SCR was installed:
-<pre>./spack find --paths scr</pre>
+<pre>~/spack/bin/./spack find --paths scr</pre>
 
 
-
-
-</pre>
 ## Current Tasks:
 <ul>
   <li>Setting up SLURM</li>
