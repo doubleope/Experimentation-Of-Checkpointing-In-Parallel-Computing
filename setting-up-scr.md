@@ -43,13 +43,14 @@ export PATH=/usr/lib64/openmpi/bin:$PATH
 
 ## Running the scr test_api example:
 ### Install SLURM
-Go to home directory by typing:
+Go to home directory by entering:
 <pre>cd</pre>
 Download SLURM:
 <pre>wget https://download.schedmd.com/slurm/slurm-20.02.0.tar.bz2
 Install by doing the following:
 cd slurm-20.02.0
 ./configure
+sudo make install
 </pre>
 ## Current Tasks:
 <ul>
