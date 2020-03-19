@@ -35,6 +35,12 @@ export PATH=/usr/lib64/openmpi/bin:$PATH
 #### Find the directory where SCR was installed:
 <pre>~/spack/bin/./spack find --paths scr</pre>
 
+#### Go to the installation directory and find the examples folder:
+<pre>cd <install dir>/share/scr/examples</pre>
+
+#### Build the test_api example:
+<pre>make test_api</pre>
+
 
 ## Current Tasks:
 <ul>
