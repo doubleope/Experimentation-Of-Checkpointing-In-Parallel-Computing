@@ -41,7 +41,13 @@ export PATH=/usr/lib64/openmpi/bin:$PATH
 #### Build the test_api example:
 <pre>make test_api</pre>
 
-
+## Running the scr test_api example:
+### Install SLURM
+<pre>cd</pre>
+<pre>wget https://download.schedmd.com/slurm/slurm-20.02.0.tar.bz2
+cd slurm-20.02.0
+./configure
+</pre>
 ## Current Tasks:
 <ul>
   <li>Setting up SLURM</li>
