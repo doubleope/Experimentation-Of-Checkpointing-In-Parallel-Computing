@@ -28,9 +28,8 @@ fc: /usr/bin/gfortran
 
 #### Do the following:
 <pre>
-sudo yum install openmpi-devel.i686
-export PATH=/usr/lib/openmpi/bin:$PATH
-sudo yum -y install glibc-devel.i686 glibc-devel
+sudo yum install openmpi-devel.x86_64
+export PATH=/usr/lib64/openmpi/bin:$PATH
 </pre>
 
 #### Find the directory where SCR was installed:
