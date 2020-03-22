@@ -12,4 +12,14 @@ systemctl stop firewalld
 Then:
 <pre>
 yum install http://build.openhpc.community/OpenHPC:/1.3/CentOS_7/x86_64/ohpc-release-1.3-1.el7.x86_64.rpm
+yum -y install ohpc-base
+yum -y install ohpc-warewulf
+systemctl enable ntpd.service
+echo "server ${ntp_server}" >> /etc/ntp.conf
+systemctl restart ntpd
+yum -y install ohpc-slurm-server
+perl -pi -e "s/ControlMachine=\S+/ControlMachine=${sms_name}/" /etc/slurm/slurm.conf
+yum -y groupinstall "InfiniBand Support"
+yum -y install infinipath-psm
+systemctl start rdma
 </pre>
