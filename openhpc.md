@@ -35,4 +35,24 @@ systemctl restart mariadb
 systemctl enable httpd.service
 systemctl restart httpd
 
+export CHROOT=/opt/ohpc/admin/images/centos7.7
+wwmkchroot centos-7 $CHROOT
+yum -y --installroot=$CHROOT install ohpc-base-compute
+cp -p /etc/resolv.conf $CHROOT/etc/resolv.conf
+yum -y --installroot=$CHROOT install ohpc-slurm-client
+yum -y --installroot=$CHROOT install ntp
+yum -y --installroot=$CHROOT install kernel
+yum -y --installroot=$CHROOT install lmod-ohpc
+
+wwinit database
+wwinit ssh_keys
+echo "${sms_ip}:/home /home nfs nfsvers=3,nodev,nosuid 0 0" >> $CHROOT/etc/fstab
+echo "${sms_ip}:/opt/ohpc/pub /opt/ohpc/pub nfs nfsvers=3,nodev 0 0" >> $CHROOT/etc/fstab
+echo "/home *(rw,no_subtree_check,fsid=10,no_root_squash)" >> /etc/exports
+echo "/opt/ohpc/pub *(ro,no_subtree_check,fsid=11)" >> /etc/exports
+exportfs -a
+systemctl restart nfs-server
+systemctl enable nfs-server
+chroot $CHROOT systemctl enable ntpd
+echo "server ${sms_ip}" >> $CHROOT/etc/ntp.conf
 </pre>
