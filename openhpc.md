@@ -22,7 +22,17 @@ systemctl enable ntpd.service
 systemctl restart ntpd
 yum -y install ohpc-slurm-server
 perl -pi -e "s/ControlMachine=\S+/ControlMachine={name_of_master_node}/" /etc/slurm/slurm.conf
-perl -pi -e "s/device = eth1/device = ${sms_eth_internal}/" /etc/warewulf/provision.conf
+</pre>
+Replace {sms_eth_internal} with what you get from entering:
+<pre>ip a</pre>
+<pre>
+perl -pi -e "s/device = eth1/device = {sms_eth_internal}/" /etc/warewulf/provision.conf
 perl -pi -e "s/^\s+disable\s+= yes/ disable = no/" /etc/xinetd.d/tftp
+ifconfig {sms_eth_internal} {sms_ip} netmask {internal_netmask} up
+systemctl restart xinetd
+systemctl enable mariadb.service
+systemctl restart mariadb
+systemctl enable httpd.service
+systemctl restart httpd
 
 </pre>
