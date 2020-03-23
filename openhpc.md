@@ -7,7 +7,7 @@ getenforce
 Decide what node to make the master node. For example 'node0'. Then copy the ip address of this node from hosts file. Open the file:
 <pre>cat /etc/hosts</pre>
 Then save the ipaddress and the name of the master node e.g 'master' to the host files by entering:
-<pre>echo {master_node_ip} {name_of_master_node} >> /etc/hosts
+<pre>echo {master_node_ip} {name_of_master_node} >> /etc/hosts</pre>
 Disable firewall:
 <pre>
 systemctl disable firewalld 
