@@ -4,6 +4,10 @@ Check if SELinux is enabled, if enabled disable it(find out how online):
 <pre>
 getenforce
 </pre>
+Decide what node to make the master node. For example 'node0'. Then copy the ip address of this node from hosts file. Open the file:
+<pre>cat /etc/hosts</pre>
+Then save the ipaddress and the name of the master node e.g 'master' to the host files by entering:
+<pre>echo <master_node_ip> <name_of_master_node> >> /etc/hosts
 Disable firewall:
 <pre>
 systemctl disable firewalld 
@@ -17,7 +21,7 @@ yum -y install ohpc-warewulf
 systemctl enable ntpd.service
 systemctl restart ntpd
 yum -y install ohpc-slurm-server
-perl -pi -e "s/ControlMachine=\S+/ControlMachine=${sms_name}/" /etc/slurm/slurm.conf
+perl -pi -e "s/ControlMachine=\S+/ControlMachine=<name_of_master_node>/" /etc/slurm/slurm.conf
 yum -y groupinstall "InfiniBand Support"
 yum -y install infinipath-psm
 systemctl start rdma
