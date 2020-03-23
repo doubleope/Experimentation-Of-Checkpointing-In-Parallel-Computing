@@ -15,7 +15,6 @@ yum install http://build.openhpc.community/OpenHPC:/1.3/CentOS_7/x86_64/ohpc-rel
 yum -y install ohpc-base
 yum -y install ohpc-warewulf
 systemctl enable ntpd.service
-echo "server ${ntp_server}" >> /etc/ntp.conf
 systemctl restart ntpd
 yum -y install ohpc-slurm-server
 perl -pi -e "s/ControlMachine=\S+/ControlMachine=${sms_name}/" /etc/slurm/slurm.conf
@@ -28,5 +27,6 @@ perl -pi -e "s/ipoib_netmask/${ipoib_netmask}/" /etc/sysconfig/network-scripts/i
 yum -y install opa-basic-tools
 systemctl start rdma
 perl -pi -e "s/device = eth1/device = ${sms_eth_internal}/" /etc/warewulf/provision.conf
+perl -pi -e "s/^\s+disable\s+= yes/ disable = no/" /etc/xinetd.d/tftp
 
 </pre>
