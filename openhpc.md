@@ -69,5 +69,6 @@ wwbootstrap `uname -r`
 wwvnfs --chroot $CHROOT
 echo "GATEWAYDEV=${eth_provision}" > /tmp/network.$$
 wwsh -y file import /tmp/network.$$ --name network
-
+wwsh -y file set network --path /etc/sysconfig/network --mode=0644 --uid=0
+wwsh -y node new ${c_name[i]} --ipaddr=${c_ip[i]} --hwaddr=${c_mac[i]} -D ${eth_provision}
 </pre>
