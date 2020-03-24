@@ -55,4 +55,19 @@ systemctl restart nfs-server
 systemctl enable nfs-server
 chroot $CHROOT systemctl enable ntpd
 echo "server ${sms_ip}" >> $CHROOT/etc/ntp.conf
+
+wwsh file import /etc/passwd
+wwsh file import /etc/group
+wwsh file import /etc/shadow
+wwsh file import /etc/slurm/slurm.conf
+wwsh file import /etc/munge/munge.key
+export WW_CONF=/etc/warewulf/bootstrap.conf
+echo "drivers += updates/kernel/" >> $WW_CONF
+echo "drivers += overlay" >> $WW_CONF
+wwbootstrap `uname -r`
+
+wwvnfs --chroot $CHROOT
+echo "GATEWAYDEV=${eth_provision}" > /tmp/network.$$
+wwsh -y file import /tmp/network.$$ --name network
+
 </pre>
