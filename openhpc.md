@@ -71,4 +71,8 @@ echo "GATEWAYDEV=${eth_provision}" > /tmp/network.$$
 wwsh -y file import /tmp/network.$$ --name network
 wwsh -y file set network --path /etc/sysconfig/network --mode=0644 --uid=0
 wwsh -y node new ${c_name[i]} --ipaddr=${c_ip[i]} --hwaddr=${c_mac[i]} -D ${eth_provision}
+wwsh -y provision set "${compute_regex}" --vnfs=centos7.7 --bootstrap=`uname -r` \
+--files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
+systemctl restart dhcpd
+wwsh pxe update
 </pre>
