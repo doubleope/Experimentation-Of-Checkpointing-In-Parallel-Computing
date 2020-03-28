@@ -46,6 +46,7 @@ systemctl restart nfs-server
 systemctl enable nfs-server
 chroot $CHROOT systemctl enable ntpd
 echo "server 10.10.1.1" >> $CHROOT/etc/ntp.conf
+echo "account required pam_slurm.so" >> $CHROOT/etc/pam.d/sshd
 
 wwsh file import /etc/passwd
 wwsh file import /etc/group
@@ -64,10 +65,10 @@ wwsh -y file import /tmp/network.$$ --name network
 wwsh -y file set network --path /etc/sysconfig/network --mode=0644 --uid=0
 
 
-wwsh -y node new c1 --ipaddr=10.10.1.2 --hwaddr=90:e2:ba:aa:fb:01 -D eth0
-wwsh -y node new c2 --ipaddr=10.10.1.3 --hwaddr=90:e2:ba:b2:95:d8 -D eth0
-wwsh -y node new c3 --ipaddr=10.10.1.4 --hwaddr=90:e2:ba:b3:75:5c -D eth0
-wwsh -y node new c4 --ipaddr=10.10.1.5 --hwaddr=90:e2:ba:b3:75:78 -D eth0
+wwsh -y node new c1 --ipaddr=10.10.1.2 --hwaddr=90:e2:ba:94:9c:7c -D eth0
+wwsh -y node new c2 --ipaddr=10.10.1.3 --hwaddr=90:e2:ba:38:38:88 -D eth0
+wwsh -y node new c3 --ipaddr=10.10.1.4 --hwaddr=90:e2:ba:24:d0:bc -D eth0
+wwsh -y node new c4 --ipaddr=10.10.1.5 --hwaddr=90:e2:ba:69:88:99 -D eth0
 
 wwsh -y provision set "c1" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
 wwsh -y provision set "c2" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
