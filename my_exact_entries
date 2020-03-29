@@ -25,6 +25,7 @@ systemctl enable mariadb.service
 systemctl restart mariadb
 systemctl enable httpd.service
 systemctl restart httpd
+systemctl enable dhcpd.service
 
 export CHROOT=/opt/ohpc/admin/images/centos7.7
 wwmkchroot centos-7 $CHROOT
@@ -46,7 +47,71 @@ systemctl restart nfs-server
 systemctl enable nfs-server
 chroot $CHROOT systemctl enable ntpd
 echo "server 10.10.1.1" >> $CHROOT/etc/ntp.conf
+
+perl -pi -e 's/# End of file/\* soft memlock unlimited\n$&/s' /etc/security/limits.conf
+perl -pi -e 's/# End of file/\* hard memlock unlimited\n$&/s' /etc/security/limits.conf
+perl -pi -e 's/# End of file/\* soft memlock unlimited\n$&/s' $CHROOT/etc/security/limits.conf
+perl -pi -e 's/# End of file/\* hard memlock unlimited\n$&/s' $CHROOT/etc/security/limits.conf
 echo "account required pam_slurm.so" >> $CHROOT/etc/pam.d/sshd
+
+yum -y install lustre-client-ohpc
+yum -y --installroot=$CHROOT install lustre-client-ohpc
+mkdir $CHROOT/mnt/lustre
+echo "${mgs_fs_name} /mnt/lustre lustre defaults,localflock,noauto,x-systemd.automount 0 0" \
+>> $CHROOT/etc/fstab
+echo "options lnet networks=o2ib(ib0)" >> /etc/modprobe.d/lustre.conf
+echo "options lnet networks=o2ib(ib0)" >> $CHROOT/etc/modprobe.d/lustre.conf
+mkdir /mnt/lustre
+mount -t lustre -o localflock ${mgs_fs_name} /mnt/lustre
+
+perl -pi -e "s/\\#\\\$ModLoad imudp/\\\$ModLoad imudp/" /etc/rsyslog.conf
+perl -pi -e "s/\\#\\\$UDPServerRun 514/\\\$UDPServerRun 514/" /etc/rsyslog.conf
+systemctl restart rsyslog
+echo "*.* @${sms_ip}:514" >> $CHROOT/etc/rsyslog.conf
+perl -pi -e "s/^\*\.info/\\#\*\.info/" $CHROOT/etc/rsyslog.conf
+perl -pi -e "s/^authpriv/\\#authpriv/" $CHROOT/etc/rsyslog.conf
+perl -pi -e "s/^mail/\\#mail/" $CHROOT/etc/rsyslog.conf
+perl -pi -e "s/^cron/\\#cron/" $CHROOT/etc/rsyslog.conf
+perl -pi -e "s/^uucp/\\#uucp/" $CHROOT/etc/rsyslog.conf
+
+yum -y install ohpc-ganglia
+yum -y --installroot=$CHROOT install ganglia-gmond-ohpc
+cp /opt/ohpc/pub/examples/ganglia/gmond.conf /etc/ganglia/gmond.conf
+perl -pi -e "s/<sms>/${sms_name}/" /etc/ganglia/gmond.conf
+cp /etc/ganglia/gmond.conf $CHROOT/etc/ganglia/gmond.conf
+echo "gridname MySite" >> /etc/ganglia/gmetad.conf
+systemctl enable gmond
+systemctl enable gmetad
+systemctl start gmond
+systemctl start gmetad
+chroot $CHROOT systemctl enable gmond
+systemctl try-restart httpd
+
+
+yum -y install clustershell-ohpc
+cd /etc/clustershell/groups.d
+mv local.cfg local.cfg.orig
+echo "adm: ${sms_name}" > local.cfg
+echo "compute: ${compute_prefix}[1-${num_computes}]" >> local.cfg
+echo "all: @adm,@compute" >> local.cfg
+
+yum -y install mrsh-ohpc mrsh-rsh-compat-ohpc
+yum -y --installroot=$CHROOT install mrsh-ohpc mrsh-rsh-compat-ohpc mrsh-server-ohpc
+echo "mshell 21212/tcp # mrshd" >> /etc/services
+echo "mlogin 541/tcp # mrlogind" >> /etc/services
+chroot $CHROOT systemctl enable xinetd
+
+yum -y install nhc-ohpc
+yum -y --installroot=$CHROOT install nhc-ohpc
+echo "HealthCheckProgram=/usr/sbin/nhc" >> /etc/slurm/slurm.conf
+echo "HealthCheckInterval=300" >> /etc/slurm/slurm.conf
+
+
+
+
+
+
+
 
 wwsh file import /etc/passwd
 wwsh file import /etc/group
@@ -75,5 +140,5 @@ wwsh -y provision set "c2" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynam
 wwsh -y provision set "c3" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
 wwsh -y provision set "c4" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
 
-systemctl restart dhcpd
+systemctl restart gmond
 wwsh pxe update
