@@ -18,9 +18,9 @@ perl -pi -e "s/ControlMachine=\S+/ControlMachine=master/" /etc/slurm/slurm.conf
 
 ip a
 
-perl -pi -e "s/device = eth1/device = enp6s0f0/" /etc/warewulf/provision.conf
+perl -pi -e "s/device = eth1/device = eth1/" /etc/warewulf/provision.conf
 perl -pi -e "s/^\s+disable\s+= yes/ disable = no/" /etc/xinetd.d/tftp
-ifconfig enp6s0f0 10.10.1.1 netmask 255.255.255.0 up
+ifconfig eth1 10.10.1.1 netmask 255.255.255.0 up
 systemctl restart xinetd
 systemctl enable mariadb.service
 systemctl restart mariadb
@@ -84,7 +84,7 @@ yum -y install clustershell-ohpc
 cd /etc/clustershell/groups.d
 mv local.cfg local.cfg.orig
 echo "adm: master" > local.cfg
-echo "compute: c[1-4]" >> local.cfg
+echo "compute: c[1-2]" >> local.cfg
 echo "all: @adm,@compute" >> local.cfg
 
 yum -y install mrsh-ohpc mrsh-rsh-compat-ohpc
@@ -115,15 +115,12 @@ wwsh -y file import /tmp/network.$$ --name network
 wwsh -y file set network --path /etc/sysconfig/network --mode=0644 --uid=0
 
 
-wwsh -y node new c1 --ipaddr=10.10.1.4 --hwaddr=90:e2:ba:b3:74:a8 -D eth0
-wwsh -y node new c2 --ipaddr=10.10.1.3 --hwaddr=90:e2:ba:b3:74:dc -D eth0
-wwsh -y node new c3 --ipaddr=10.10.1.2 --hwaddr=90:e2:ba:b3:bd:04 -D eth0
-wwsh -y node new c4 --ipaddr=10.10.1.5 --hwaddr=90:e2:ba:b3:74:c8 -D eth0
+wwsh -y node new c1 --ipaddr=10.10.1.3 --hwaddr=02:69:99:2f:ee:c6 -D eth0
+wwsh -y node new c2 --ipaddr=10.10.1.2 --hwaddr=02:f0:ce:8f:77:2b -D eth0
+
 
 wwsh -y provision set "c1" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
 wwsh -y provision set "c2" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
-wwsh -y provision set "c3" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
-wwsh -y provision set "c4" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
 
 systemctl restart gmond
 wwsh pxe update
