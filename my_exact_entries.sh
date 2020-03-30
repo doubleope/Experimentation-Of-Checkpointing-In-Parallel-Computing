@@ -1,3 +1,4 @@
+#!/bin/sh
 sudo -i
 getenforce
 cat /etc/hosts
