@@ -114,8 +114,8 @@ wwsh -y file import /tmp/network.$$ --name network
 wwsh -y file set network --path /etc/sysconfig/network --mode=0644 --uid=0
 
 
-wwsh -y node new c1 --ipaddr=10.10.1.3 --hwaddr=02:79:38:1f:9e:41 -D eth0
-wwsh -y node new c2 --ipaddr=10.10.1.2 --hwaddr=02:33:d5:e7:30:6e -D eth0
+wwsh -y node new c1 --ipaddr=10.10.1.3 --hwaddr=02:f2:d4:69:b1:6b -D eth0
+wwsh -y node new c2 --ipaddr=10.10.1.2 --hwaddr=02:74:9c:32:03:35 -D eth0
 
 
 wwsh -y provision set "c1" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynamic_hosts,passwd,group,shadow,slurm.conf,munge.key,network
