@@ -123,3 +123,5 @@ wwsh -y provision set "c2" --vnfs=centos7.7 --bootstrap=`uname -r` --files=dynam
 
 systemctl restart gmond
 wwsh pxe update
+
+yum -y install ohpc-autotools
