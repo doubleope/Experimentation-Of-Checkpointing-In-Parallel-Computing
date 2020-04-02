@@ -2,6 +2,8 @@
 yum remove mariadb-server mariadb-devel -y
 yum remove slurm munge munge-libs munge-devel -y
 cat /etc/passwd | grep slurm
+userdel -r slurm
+userdel -r munge
 
 yum install mariadb-server mariadb-devel -y
 
@@ -21,8 +23,8 @@ rngd -r /dev/urandom
 dd if=/dev/urandom bs=1 count=1024 > /etc/munge/munge.key
 chown munge: /etc/munge/munge.key
 chmod 400 /etc/munge/munge.key
-scp /etc/munge/munge.key root@172.17.20.2:/etc/munge 
-scp /etc/munge/munge.key root@172.17.20.3:/etc/munge 
+scp /etc/munge/munge.key root@128.105.145.231:/etc/munge 
+scp /etc/munge/munge.key root@128.105.145.226:/etc/munge 
 
 
 yum install openssl openssl-devel pam-devel numactl numactl-devel hwloc hwloc-devel lua lua-devel readline-devel rrdtool-devel ncurses-devel man2html libibmad libibumad -y
