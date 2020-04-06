@@ -2,29 +2,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-cue4xoblysuh5pailuwj57g5fu7jvuns/include/scr.h"
+
 int TIMESTEPS =100;
-int main(int argc, char* argv[]) {
-  MPI_Init(&argc, &argv);
-
-  /* Call SCR_Init after MPI_Init */
-  SCR_Init();
-
-  for(int t = 0; t < TIMESTEPS; t++)
-  {
-    /* ... Do work ... */
-
-    int flag;
-    /* Ask SCR if we should take a checkpoint now */
-    SCR_Need_checkpoint(&flag);
-    if (flag)
-      checkpoint();
-  }
-
-  /* Call SCR_Finalize before MPI_Finalize */
-  SCR_Finalize();
-  MPI_Finalize();
-  return 0;
-}
 
 void checkpoint() {
   /* Tell SCR that you are getting ready to start a checkpoint phase */
@@ -54,3 +33,27 @@ void checkpoint() {
   SCR_Complete_checkpoint(1);
   return;
 }
+
+int main(int argc, char* argv[]) {
+  MPI_Init(&argc, &argv);
+
+  /* Call SCR_Init after MPI_Init */
+  SCR_Init();
+
+  for(int t = 0; t < TIMESTEPS; t++)
+  {
+    /* ... Do work ... */
+
+    int flag;
+    /* Ask SCR if we should take a checkpoint now */
+    SCR_Need_checkpoint(&flag);
+    if (flag)
+      checkpoint();
+  }
+
+  /* Call SCR_Finalize before MPI_Finalize */
+  SCR_Finalize();
+  MPI_Finalize();
+  return 0;
+}
+
