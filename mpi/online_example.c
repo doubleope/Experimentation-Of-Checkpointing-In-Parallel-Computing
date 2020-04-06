@@ -3,7 +3,7 @@
 #include <unistd.h>
 int TIMESTEPS =100;
 int main(int argc, char* argv[]) {
-  MPI_Init(argc, argv);
+  MPI_Init(&argc, &argv);
 
   /* Call SCR_Init after MPI_Init */
   SCR_Init();
