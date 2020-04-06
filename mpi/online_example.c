@@ -1,6 +1,7 @@
 #include <mpi.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "scr.h"
 int TIMESTEPS =100;
 int main(int argc, char* argv[]) {
   MPI_Init(&argc, &argv);
