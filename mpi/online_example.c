@@ -25,7 +25,7 @@ void checkpoint() {
   /* Use the new file name to perform your checkpoint I/O */
   FILE* fs = fopen(scr_file, "w");
   if (fs != NULL) {
-    fwrite(state, ..., fs);
+    fwrite(state, 1, sizeof(state), fs);
     fclose(fs);
   }
 
@@ -39,11 +39,11 @@ int main(int argc, char* argv[]) {
 
   /* Call SCR_Init after MPI_Init */
   SCR_Init();
-
+  int state;
   for(int t = 0; t < TIMESTEPS; t++)
   {
     /* ... Do work ... */
-
+    state = t;
     int flag;
     /* Ask SCR if we should take a checkpoint now */
     SCR_Need_checkpoint(&flag);
