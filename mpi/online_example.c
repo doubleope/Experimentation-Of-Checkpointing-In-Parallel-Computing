@@ -5,7 +5,7 @@
 
 int TIMESTEPS =100;
 
-void checkpoint() {
+void checkpoint(state) {
   /* Tell SCR that you are getting ready to start a checkpoint phase */
   SCR_Start_checkpoint();
 
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
     /* Ask SCR if we should take a checkpoint now */
     SCR_Need_checkpoint(&flag);
     if (flag)
-      checkpoint();
+      checkpoint(state);
   }
 
   /* Call SCR_Finalize before MPI_Finalize */
