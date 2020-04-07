@@ -1,7 +1,7 @@
 #include <mpi.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-cue4xoblysuh5pailuwj57g5fu7jvuns/include/scr.h"
+
 
 int TIMESTEPS =100;
 
