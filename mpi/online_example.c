@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
 
   /* Call SCR_Init after MPI_Init */
   SCR_Init();
-  int state;
+  char state[] = "some state";
   for(int t = 0; t < TIMESTEPS; t++)
   {
     /* ... Do work ... */
