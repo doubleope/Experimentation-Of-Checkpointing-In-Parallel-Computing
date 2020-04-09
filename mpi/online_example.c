@@ -39,11 +39,11 @@ int main(int argc, char* argv[]) {
 
   /* Call SCR_Init after MPI_Init */
   SCR_Init();
-  char state[] = "some state";
+  
   for(int t = 0; t < TIMESTEPS; t++)
   {
     /* ... Do work ... */
-    state = t;
+    char state[] = "some state"
     int flag;
     /* Ask SCR if we should take a checkpoint now */
     SCR_Need_checkpoint(&flag);
