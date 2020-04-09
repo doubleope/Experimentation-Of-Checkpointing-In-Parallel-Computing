@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
   for(int t = 0; t < TIMESTEPS; t++)
   {
     /* ... Do work ... */
-    char state[] = "some state"
+    char state[] = "some state";
     int flag;
     /* Ask SCR if we should take a checkpoint now */
     SCR_Need_checkpoint(&flag);
