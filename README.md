@@ -9,3 +9,4 @@ Setting up SCR on CloudLab therefore all work documented here will work on CentO
 
 ### References:
 1. https://scr.readthedocs.io/en/latest/
+2. https://mpitutorial.com/
