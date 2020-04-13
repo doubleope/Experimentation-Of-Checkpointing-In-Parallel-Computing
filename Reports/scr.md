@@ -3,3 +3,6 @@
 2. Talk about the process in which it saves checkpoints
 3. Explore how to integrate scr
 4. Explore the advantages
+
+
+##### Methodology
