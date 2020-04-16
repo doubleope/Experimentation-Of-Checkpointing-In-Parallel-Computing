@@ -190,7 +190,7 @@ double getbw(char *name, char *buf, size_t size, int times)
     {
         /* start the timer */
         double time_start = MPI_Wtime();
-
+        int ping_pong_count = 0;
         /* write the checkpoint file */
         int i, count = 0;
         for (i = 0; i < times; i++)
@@ -208,7 +208,7 @@ double getbw(char *name, char *buf, size_t size, int times)
                 MPI_Abort(MPI_COMM_WORLD, 1);
             }
 
-            int ping_pong_count = 0;
+
             int partner_rank = (rank + 1) % 2;
             while (ping_pong_count < PING_PONG_LIMIT)
             {
