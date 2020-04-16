@@ -181,6 +181,7 @@ int test_abtoull(char* str, unsigned long long* val)
 
 double getbw(char* name, char* buf, size_t size, int times)
 {
+  const int PING_PONG_LIMIT = 10;
   char file[SCR_MAX_FILENAME];
   double bw = 0.0;
 
@@ -195,11 +196,6 @@ double getbw(char* name, char* buf, size_t size, int times)
       int rc;
       int valid = 0;
 
-      
-      if (world_size != 2) {
-        fprintf(stderr, "World size must be two for %s\n", argv[0]);
-        MPI_Abort(MPI_COMM_WORLD, 1);
-      }
 
   int ping_pong_count = 0;
   int partner_rank = (world_rank + 1) % 2;
