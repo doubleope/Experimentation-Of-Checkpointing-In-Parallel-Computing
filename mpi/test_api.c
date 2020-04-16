@@ -32,8 +32,8 @@ int output = 0;
 char *path = NULL;
 int use_scr = 1;
 
-int rank = -1;
-int ranks = 0;
+int world_rank;
+int world_size;
 
 int timestep = 0;
 
@@ -424,9 +424,7 @@ void print_usage()
 int main(int argc, char *argv[])
 {
     MPI_Init(&argc, &argv);
-    int world_rank;
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-    int world_size;
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
     
 
