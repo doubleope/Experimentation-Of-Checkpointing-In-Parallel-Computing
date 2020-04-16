@@ -204,7 +204,7 @@ double getbw(char *name, char *buf, size_t size, int times)
             // We are assuming at least 2 processes for this task
             if (ranks != 2)
             {
-                fprintf(stderr, "World size must be two for %s\n", argv[0]);
+                fprintf(stderr, "World size must be two");
                 MPI_Abort(MPI_COMM_WORLD, 1);
             }
 
