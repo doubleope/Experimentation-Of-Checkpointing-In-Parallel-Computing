@@ -34,7 +34,7 @@ int use_scr = 1;
 
 int rank;
 int ranks;
-
+const int PING_PONG_LIMIT = 10;
 int timestep = 0;
 
 static unsigned long long kilo = 1024ULL;
@@ -202,7 +202,7 @@ double getbw(char *name, char *buf, size_t size, int times)
            
 
             // We are assuming at least 2 processes for this task
-            if (world_size != 2)
+            if (ranks != 2)
             {
                 fprintf(stderr, "World size must be two for %s\n", argv[0]);
                 MPI_Abort(MPI_COMM_WORLD, 1);
@@ -424,8 +424,8 @@ void print_usage()
 int main(int argc, char *argv[])
 {
     MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &ranks);
     
 
     static const char *opt_string = "s:t:z:p:f:o:h";
