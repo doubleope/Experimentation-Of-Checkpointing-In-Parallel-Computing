@@ -26,10 +26,11 @@ fc: /usr/bin/gfortran
 
 ## Building the SCR test_api example
 
-#### Do the following:
+#### Find the directory where openmpi was installed and export to path:
 <pre>
-sudo yum install openmpi-devel.x86_64
-export PATH=/usr/lib64/openmpi/bin:$PATH
+~/spack/bin/./spack find --paths openmpi
+Copy the output and replace <directory> in the following line with it
+export PATH=<directory>/bin:$PATH
 </pre>
 
 #### Find the directory where SCR was installed:
