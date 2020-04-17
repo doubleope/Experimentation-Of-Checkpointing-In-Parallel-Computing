@@ -29,7 +29,9 @@ fc: /usr/bin/gfortran
 #### Find the directory where openmpi was installed and export to path:
 <pre>
 ~/spack/bin/./spack find --paths openmpi
+</pre>
 Copy the output and replace <directory> in the following line with it
+<pre>
 export PATH=<directory>/bin:$PATH
 </pre>
 
