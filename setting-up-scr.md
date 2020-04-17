@@ -39,7 +39,7 @@ export PATH={directory}/bin:$PATH
 <pre>~/spack/bin/./spack find --paths scr</pre>
 
 #### Go to the installation directory and find the examples folder:
-<pre>cd <install dir>/share/scr/examples</pre>
+<pre>cd {installation directory}/share/scr/examples</pre>
 
 #### Build the test_api example:
 <pre>make test_api</pre>
