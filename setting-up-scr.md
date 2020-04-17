@@ -30,9 +30,9 @@ fc: /usr/bin/gfortran
 <pre>
 ~/spack/bin/./spack find --paths openmpi
 </pre>
-Copy the output and replace <directory> in the following line with it
+Copy the output and replace {directory} in the following line with it
 <pre>
-export PATH=<directory>/bin:$PATH
+export PATH={directory}/bin:$PATH
 </pre>
 
 #### Find the directory where SCR was installed:
