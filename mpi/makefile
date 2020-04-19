@@ -10,9 +10,6 @@ all: test_api ping_pong original_ping_pong mpi_prog
 clean:
 	rm -rf *.o test_api ping_pong original_ping_pong mpi_prog
 
-clean_ckpt:
-	rm -rf ckpt*
-
 test_api: test_common.o test_common.h test_api.c
 	$(MPICC) $(OPT) $(CFLAGS) $(INCLUDES) -o test_api test_common.o test_api.c \
 	  $(LDFLAGS) $(LIBDIR)
