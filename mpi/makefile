@@ -20,4 +20,4 @@ original_ping_pong:
 mpi_prog:
 	$(MPICC) $(OPT) $(CFLAGS) $(INCLUDES) -o mpi_prog mpi_prog.c -std=c99 $(LDFLAGS) $(LIBDIR)
 test_ckpt:
-	$(MPICC) $(OPT) $(CFLAGS) $(INCLUDES) -o mpi_prog mpi_prog.c -std=c99 $(LDFLAGS) $(LIBDIR)
+	$(MPICC) $(OPT) $(CFLAGS) $(INCLUDES) -o test_ckpt test_ckpt.c -std=c99 $(LDFLAGS) $(LIBDIR)
