@@ -448,10 +448,10 @@ int main (int argc, char* argv[])
       );
     }
     if(rank == 0){
-      strcpy(file, "/tmp/doupleop/scr.defjobid/scr.dataset.80/rank_0.ckpt");
+      strcpy(file, "/tmp/doupleop/scr.defjobid/scr.dataset.81/rank_0.ckpt");
     }
     if(rank == 1){
-      strcpy(file, "/tmp/doupleop/scr.defjobid/scr.dataset.80/rank_1.ckpt");
+      strcpy(file, "/tmp/doupleop/scr.defjobid/scr.dataset.81/rank_1.ckpt");
     }
     printf("the file is %s\n", file);
     /* read the data */
