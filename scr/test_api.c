@@ -430,29 +430,24 @@ int main (int argc, char* argv[])
     if (rank == 0) {
       printf("Restarting from checkpoint named %s\n", dset);
     }
-    strcpy(dset, "ckpt.63");
-    printf("Changing to %s \n", dset);
+
     /* indicate to library that we're start to read our restart */
     SCR_Start_restart(dset);
-    printf("This is the value of dset after scr start restart is called: %s \n", dset);
     if (scr_retval != SCR_SUCCESS) {
       printf("%d: failed calling SCR_Start_restart: %d: @%s:%d\n",
              rank, scr_retval, __FILE__, __LINE__
       );
     }
-    printf("This is still the value of dset : %s \n", dset);
+
     /* get our file name */
     char file[SCR_MAX_FILENAME];
-    printf("Initial value of file: %s\n", file);
     scr_retval = SCR_Route_file(name, file);
-    printf("Value of file after retval: %s\n", file);
-    printf("Value of retval: %d\n", scr_retval);
     if (scr_retval != SCR_SUCCESS) {
       printf("%d: failed calling SCR_Route_file: %d: @%s:%d\n",
              rank, scr_retval, __FILE__, __LINE__
       );
     }
-    printf("The file is %s \n", file);
+
     /* read the data */
     if (read_checkpoint(file, &timestep, buf, filesize)) {
       /* read the file ok, now check that contents are good */
