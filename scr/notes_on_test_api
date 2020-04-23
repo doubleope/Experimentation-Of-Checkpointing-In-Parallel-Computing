@@ -1,0 +1,9 @@
+main calls the mpi functions to set it ready
+calls the print usage function
+start the mpi_wtime
+
+
+calls on SCR_Have_restart which returns have_restart and dset
+have_restart shows there is a checkpoint to restart from and dset holds the name of the checkpoint file to restart from
+SCR_Start_restart gets the name of the file from dset and attempts to restart
+file name is created
