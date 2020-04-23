@@ -447,7 +447,7 @@ int main (int argc, char* argv[])
              rank, scr_retval, __FILE__, __LINE__
       );
     }
-
+    printf("The file is %s \n", file);
     /* read the data */
     if (read_checkpoint(file, &timestep, buf, filesize)) {
       /* read the file ok, now check that contents are good */
