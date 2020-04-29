@@ -1,4 +1,4 @@
-## Note: This is not working yet, this is for documentation purposes only for now. Will update when everything works
+# How to setup SCR
 
 ## Install spack:
 
