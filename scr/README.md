@@ -24,7 +24,7 @@ fc: /usr/bin/gfortran
 
 <pre>~/spack/bin/./spack install scr</pre>
 
-## Building the SCR test_api example
+## Complete SCR setup
 
 #### Find the directory where openmpi was installed and export to path:
 <pre>
@@ -35,14 +35,12 @@ Copy the output and replace {directory} in the following line with it
 export PATH={directory}/bin:$PATH
 </pre>
 
+## Run the SCR test_api example
+
 #### Find the directory where SCR was installed:
 <pre>~/spack/bin/./spack find --paths scr</pre>
 
 #### Go to the installation directory and find the examples folder:
 <pre>cd {installation directory}/share/scr/examples</pre>
-
-#### Build the test_api example:
 <pre>make test_api</pre>
-
-#### Run the test_api example:
 <pre>mpirun -np 2 test_api</pre>
