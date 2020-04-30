@@ -25,7 +25,10 @@ int main(int argc, char **argv)
     int i;
     for (i = 1; i < NUMBER_OF_ROUNDS + 1; ++i)
     {
-        printf("THIS IS ROUND: %d\n", i);
+        if(word_rank == 0)
+        {
+            printf("THIS IS ROUND: %d\n", i);
+        }
         int ping_pong_count = 0;
         int partner_rank = (world_rank + 1) % 2;
         while (ping_pong_count < PING_PONG_LIMIT)
