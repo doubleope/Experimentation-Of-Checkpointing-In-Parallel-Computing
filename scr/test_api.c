@@ -447,17 +447,10 @@ int main (int argc, char* argv[])
              rank, scr_retval, __FILE__, __LINE__
       );
     }
-    if(rank == 0){
-      strcpy(file, "/tmp/doupleop/scr.defjobid/scr.dataset.86/rank_0.ckpt");
-    }
-    if(rank == 1){
-      strcpy(file, "/tmp/doupleop/scr.defjobid/scr.dataset.86/rank_1.ckpt");
-    }
-    printf("the file is %s\n", file);
+
     /* read the data */
     if (read_checkpoint(file, &timestep, buf, filesize)) {
       /* read the file ok, now check that contents are good */
-      printf("the file is still %s\n", file);
       found_checkpoint = 1;
       if (!check_buffer(buf, filesize, rank, timestep)) {
         printf("%d: Invalid value in buffer\n", rank);

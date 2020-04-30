@@ -2,8 +2,8 @@ MPICC     ?= mpicc
 MPICXX    ?= mpicxx
 MPIF90    ?= mpif90
 OPT       ?= -g -O3
-LIBDIR     = -L/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-vnilhe2st6d2c57eyi5yv6n6cnerk2cv/lib64 -Wl,-rpath,/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-vnilhe2st6d2c57eyi5yv6n6cnerk2cv/lib64 -lscr 
-INCLUDES   = -I/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-vnilhe2st6d2c57eyi5yv6n6cnerk2cv/include -I/usr/include -I.
+LIBDIR     = -L/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-twvcvqe76uidtfbffsoadbyq6os3pw5s/lib64 -Wl,-rpath,/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-twvcvqe76uidtfbffsoadbyq6os3pw5s/lib64 -lscr 
+INCLUDES   = -I/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-twvcvqe76uidtfbffsoadbyq6os3pw5s/include -I/usr/include -I.
 
 all: test_api test_api_multiple test_interpose test_interpose_multiple test_ckpt_C test_ckpt_F
 
