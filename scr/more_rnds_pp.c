@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     int i;
     for (i = 1; i < NUMBER_OF_ROUNDS + 1; ++i)
     {
-        if(word_rank == 0)
+        if(world_rank == 0)
         {
             printf("THIS IS ROUND: %d\n", i);
         }
