@@ -1,4 +1,3 @@
-
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,8 +21,13 @@ int main(int argc, char **argv)
         fprintf(stderr, "World size must be two for %s\n", argv[0]);
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
+    int i;
     for (i = 1; i < NUMBER_OF_ROUNDS + 1; ++i)
     {
+        if (world_rank == 0)
+        {
+            printf("THIS IS ROUND: %d\n", i);
+        }
         int ping_pong_count = 0;
         int partner_rank = (world_rank + 1) % 2;
         while (ping_pong_count < PING_PONG_LIMIT)
