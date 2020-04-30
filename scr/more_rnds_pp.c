@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
     for (i = 1; i < NUMBER_OF_ROUNDS + 1; ++i)
-      printf("ROUND 1: %d", i)
+      printf("THIS IS ROUND: %d", i)
     {
         int ping_pong_count = 0;
         int partner_rank = (world_rank + 1) % 2;
