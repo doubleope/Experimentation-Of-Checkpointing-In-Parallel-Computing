@@ -278,7 +278,7 @@ double getbw(char *name, char *buf, size_t size, int times)
                 valid = 1;
 
                 /* write the checkpoint data */
-                rc = write_checkpoint(fd_me, timestep, buf, size);
+                rc = write_checkpoint(fd_me, 0, buf, size);
                 if (rc < 0)
                 {
                     valid = 0;
