@@ -22,6 +22,7 @@ int main(int argc, char **argv)
         fprintf(stderr, "World size must be two for %s\n", argv[0]);
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
+    int i;
     for (i = 1; i < NUMBER_OF_ROUNDS + 1; ++i)
       printf("THIS IS ROUND: %d", i);
     {
