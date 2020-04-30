@@ -5,10 +5,10 @@ OPT       ?= -g -O3
 LIBDIR     = -L/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-twvcvqe76uidtfbffsoadbyq6os3pw5s/lib64 -Wl,-rpath,/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-twvcvqe76uidtfbffsoadbyq6os3pw5s/lib64 -lscr 
 INCLUDES   = -I/users/doupleop/spack/opt/spack/linux-centos7-haswell/gcc-4.8.5/scr-2.0.0-twvcvqe76uidtfbffsoadbyq6os3pw5s/include -I/usr/include -I.
 
-all: test_api test_api_multiple test_interpose test_interpose_multiple test_ckpt_C test_ckpt_F
+all: test_api test_api_multiple test_interpose test_interpose_multiple test_ckpt_C test_ckpt_F more_rnds_pp
 
 clean:
-	rm -rf *.o test_api test_api_multiple test_interpose test_interpose_multiple test_ckpt_C
+	rm -rf *.o test_api test_api_multiple test_interpose test_interpose_multiple test_ckpt_C more_rnds_pp
 
 test_api: test_common.o test_common.h test_api.c
 	$(MPICC) $(OPT) $(CFLAGS) $(INCLUDES) -o test_api test_common.o test_api.c \
@@ -34,3 +34,7 @@ test_ckpt_C: test_ckpt.C
 test_ckpt_F: test_ckpt.F
 	$(MPIF90) $(OPT) $(F90FLAGS) $(INCLUDES) -o test_ckpt_F test_ckpt.F \
 	  $(LDFLAGS) -lscrf $(LIBDIR)
+
+more_rnds_pp:
+	$(MPICC) $(OPT) $(CFLAGS) $(INCLUDES) -o more_rnds_pp more_rnds_pp.c \
+	  $(LDFLAGS) $(LIBDIR)
