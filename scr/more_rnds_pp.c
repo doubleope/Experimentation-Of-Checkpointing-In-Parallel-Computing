@@ -48,6 +48,7 @@ int main(int argc, char **argv)
                        world_rank, ping_pong_count, partner_rank);
             }
         }
+        sleep(5);
     }
     MPI_Finalize();
 }
