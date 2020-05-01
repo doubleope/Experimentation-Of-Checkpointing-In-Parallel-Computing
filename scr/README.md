@@ -11,8 +11,8 @@ cd spack/bin
 
 <pre>sudo yum install gcc-gfortran</pre>
 
-Then locate compilers.yaml file at:
-<pre>~/.spack/linux </pre>
+Open the compilers.yaml file:
+<pre>vim ~/.spack/linux/compilers.yaml </pre>
 
 Modify the file and make changes to 'f77' and 'fc' fields like so:
 <pre>
