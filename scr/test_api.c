@@ -201,7 +201,7 @@ double getbw(char *name, char *buf, size_t size, int times)
             int valid = 0;
             if (rank == 0)
             {
-                printf("THIS IS ROUND: %d\n", i);
+                printf("THIS IS ROUND: %d\n", timestep);
             }
             int ping_pong_count = 0;
             int partner_rank = (rank + 1) % 2;
