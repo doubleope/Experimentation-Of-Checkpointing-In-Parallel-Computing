@@ -564,7 +564,7 @@ int main(int argc, char *argv[])
     /* now compute the bandwidth and print stats */
     if (times > 0)
     {
-        double bw = getbw(name, buf, filesize, timestep);
+        double bw = getbw(name, buf, filesize, times);
 
         MPI_Barrier(MPI_COMM_WORLD);
 
