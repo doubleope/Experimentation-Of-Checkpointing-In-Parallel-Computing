@@ -555,6 +555,7 @@ int main(int argc, char *argv[])
         }
     }
     sleep(2);
+    printf("About to be the first rank");
     if (rank == 0)
     {
         printf("This is buf %s\n", buf);
@@ -563,13 +564,13 @@ int main(int argc, char *argv[])
     {
         printf("This is buf %s\n", buf);
     }
-
+    printf("About to be the second rank");
     if (buf != NULL)
     {
         free(buf);
         buf = NULL;
     }
-
+    printf("End");
     SCR_Finalize();
     MPI_Finalize();
 
