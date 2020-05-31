@@ -555,7 +555,14 @@ int main(int argc, char *argv[])
         }
     }
     sleep(2);
-    printf("This is buf %s\n", buf);
+    if (rank == 0)
+    {
+        printf("This is buf %s\n", buf);
+    }
+    if (rank == 1)
+    {
+        printf("This is buf %s\n", buf);
+    }
 
     if (buf != NULL)
     {
