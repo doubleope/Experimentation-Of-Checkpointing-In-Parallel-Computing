@@ -554,6 +554,7 @@ int main(int argc, char *argv[])
                    bwmin, bwmax, bwsum / ranks, bwsum);
         }
     }
+    sleep(5);
     if(rank == 0)
     {
         printf("About to be the first rank");
@@ -571,6 +572,7 @@ int main(int argc, char *argv[])
         printf("This is buf %s\n", buf);
     }
     
+    sleep(5);
     if (buf != NULL)
     {
         free(buf);
